@@ -22,7 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class UsersListingComponent implements OnInit, OnDestroy {
 
-  @ViewChild(MatPaginator) paginator: any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
   searchKeyword: string = '';
   usersData: UsersData | undefined;
@@ -60,14 +60,9 @@ export class UsersListingComponent implements OnInit, OnDestroy {
     else {
       this.usersService.getUsers(page).subscribe(
         (data) => {
-          try {
-            this.cacheService.set(page.toString(), data);
-            this.usersData = data;
-            this.isLoadingResults = false;
-          } catch (error) {
-            console.log(error);
-            this.isLoadingResults = false;
-          }
+          this.usersData = data;
+          this.cacheService.set(page.toString(), data);
+          this.isLoadingResults = false;
         }
       );
     }

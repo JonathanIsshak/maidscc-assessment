@@ -17,7 +17,7 @@ export class CacheService {
     console.log('setting cache', key, value);
     if (isUserDetails) key = `user${key}`;
     if (this.cache.has(key)) {
-      throw new Error(`Key ${key} already exists in cache.`);
+      return;
     }
     this.cache.set(key, value);
     this.cache$.next(this.cache.get(key));
@@ -27,7 +27,7 @@ export class CacheService {
     const data = this.cache.get(key) ?? this.cache.get(`user${key}`);
     this.cache$.next(data);
     console.log("data", data)
-    return data!;
+    return data;
   }
 
   delete(key: string) {
