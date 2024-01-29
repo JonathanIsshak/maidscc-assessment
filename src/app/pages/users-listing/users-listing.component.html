@@ -1,10 +1,10 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container">
   @if (isLoadingResults) {
   <div class="example-loading-shade">
     <mat-spinner></mat-spinner>
   </div>
   } @else {
-  <div class="example-table-container">
+  <!-- <div class="example-table-container">
     <table
       mat-table
       [dataSource]="usersData!.data | appFilter: searchKeyword"
@@ -13,42 +13,70 @@
       matSortActive="created"
       matSortDisableClear
       matSortDirection="desc"
-    >
-      <!-- Id Column -->
-      <ng-container matColumnDef="avatar">
+    > -->
+  <!-- Id Column -->
+  <!-- <ng-container matColumnDef="avatar">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let row">
           <img class="user-image" src="{{ row.avatar }}" alt="" />
         </td>
-      </ng-container>
-      <!-- Number Column -->
-      <ng-container matColumnDef="first_name">
+      </ng-container> -->
+  <!-- Number Column -->
+  <!-- <ng-container matColumnDef="first_name">
         <th mat-header-cell *matHeaderCellDef>#</th>
         <td mat-cell *matCellDef="let row">{{ row.first_name }}</td>
-      </ng-container>
+      </ng-container> -->
 
-      <!-- Title Column -->
-      <ng-container matColumnDef="last_name">
+  <!-- <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let row">{{ row.first_name }}</td>
+      </ng-container> -->
+
+  <!-- Title Column -->
+  <!-- <ng-container matColumnDef="last_name">
         <th mat-header-cell *matHeaderCellDef>Title</th>
         <td mat-cell *matCellDef="let row">{{ row.last_name }}</td>
-      </ng-container>
+      </ng-container> -->
 
-      <!-- State Column -->
-      <ng-container matColumnDef="email">
+  <!-- State Column -->
+  <!-- <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>State</th>
         <td mat-cell *matCellDef="let row">{{ row.email }}</td>
-      </ng-container>
+      </ng-container> -->
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
         [routerLink]="['/user/', row.id]"
         *matRowDef="let row; columns: displayedColumns"
       ></tr>
     </table>
-  </div>
+  </div> -->
 
+  <div class="cards-container">
+    @for (user of usersData!.data | appFilter: searchKeyword; track $index) {
+    <mat-card class="user-card" [routerLink]="['/user/', user.id]">
+      <mat-card-header class="user-card-header">
+        <div mat-card-avatar class="user-image">
+          <img src="{{ user.avatar }}" alt="" />
+        </div>
+      </mat-card-header>
+      <mat-card-content class="user-card-content">
+        <mat-card-title class="first-name">{{
+          user.first_name
+        }}</mat-card-title>
+        <mat-card-subtitle class="last-name">{{
+          user.last_name
+        }}</mat-card-subtitle>
+        <p class="email">
+          {{ user.email }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
   <mat-paginator
+    class="paginator"
     [length]="usersData!.total"
     [pageSize]="usersData!.per_page"
     aria-label="Choose page"

@@ -10,12 +10,13 @@ import { BehaviorSubject, Observable, Subject, Subscription, switchMap, takeUnti
 import { RouterModule } from '@angular/router';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { SearchService } from '../../services/search.service';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
   selector: 'app-users-listing',
   standalone: true,
-  imports: [MatProgressSpinnerModule, MatTableModule, MatSortModule, MatPaginatorModule, RouterModule, FilterPipe],
+  imports: [MatProgressSpinnerModule, MatTableModule, MatSortModule, MatPaginatorModule, RouterModule, FilterPipe, MatCardModule],
   templateUrl: './users-listing.component.html',
   styleUrl: './users-listing.component.scss'
 })
