@@ -1,0 +1,33 @@
+<!-- spinner -->
+@if (isLoading) {
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+
+<!-- back button -->
+<div class="back-button">
+  <button mat-raised-button color="primary" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    <span>Back</span>
+  </button>
+
+<div class="user-details">
+  <div class="thumbnail">
+    <img src="{{ userData?.avatar }}" alt="" />
+  </div>
+  <div class="info-container">
+    <div class="info">
+      <div class="label">First Name</div>
+      <div class="value">{{ userData?.first_name }}</div>
+    </div>
+    <div class="info">
+      <div class="label">Last Name</div>
+      <div class="value">{{ userData?.last_name }}</div>
+    </div>
+    <div class="info">
+      <div class="label">Email</div>
+      <div class="value">{{ userData?.email }}</div>
+    </div>
+  </div>
+</div>

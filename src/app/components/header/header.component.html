@@ -1,0 +1,11 @@
+<!-- create header with search bar -->
+
+<div class="header">
+  <div class="header-container">
+    <div class="header-search">
+      <mat-form-field>
+        <input matInput placeholder="Search" [(ngModel)]="searchInput" (ngModelChange)="onInputChange($event)" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>
