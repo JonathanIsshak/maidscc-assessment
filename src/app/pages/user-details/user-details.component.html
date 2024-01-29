@@ -6,7 +6,7 @@
 }
 
 <!-- back button -->
-<div class="back-button">
+<div class="user-details-page">
   <button (click)="goBack()">
     <mat-icon>arrow_back</mat-icon>
   </button>
@@ -16,16 +16,15 @@
     <img src="{{ userData?.avatar }}" alt="" />
   </div>
   <div class="info-container">
-    <div class="info">
-      <div class="label">First Name</div>
-      <div class="value">{{ userData?.first_name }}</div>
+    <div class="fullname">
+      <div class="info first-name">
+        <div class="value">{{ userData?.first_name }}</div>
+      </div>
+      <div class="info last-name">
+        <div class="value">{{ userData?.last_name }}</div>
+      </div>
     </div>
-    <div class="info">
-      <div class="label">Last Name</div>
-      <div class="value">{{ userData?.last_name }}</div>
-    </div>
-    <div class="info">
-      <div class="label">Email</div>
+    <div class="email">
       <div class="value">{{ userData?.email }}</div>
     </div>
   </div>
